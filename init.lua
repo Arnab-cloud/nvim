@@ -14,12 +14,12 @@ vim.opt.autoindent = true
 
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		-- Verify the client exists before enabling completion
-		if client then
-			vim.lsp.completion.enable(true, client.id, args.buf)
-		end
-	end,
-})
+--  vim.api.nvim_create_autocmd("LspAttach", {
+--  	callback = function(args)
+--  		local client = vim.lsp.get_client_by_id(args.data.client_id)
+--  		-- Verify the client exists before enabling completion
+--  		if client then
+--  			vim.lsp.completion.enable(true, client.id, args.buf)
+--  		end
+--  	end,
+--  })
