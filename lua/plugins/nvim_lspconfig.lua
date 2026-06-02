@@ -1,10 +1,10 @@
 return {
 	"neovim/nvim-lspconfig",
-	dependencies = { "hrsh7th/cmp-nvim-lsp" },
+--	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	config = function()
-		vim.lsp.config("*", {
-			capabilities = require("cmp_nvim_lsp"),
-		})
+		--vim.lsp.config("*", {
+		--	capabilities = require("cmp_nvim_lsp"),
+--		})
 
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("clangd")
