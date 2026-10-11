@@ -5,20 +5,30 @@ return {
 		vim.lsp.config("*", {
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 		})
-		vim.lsp.config("bidhulsp", {
-			cmd = { "D:\\coding\\bidhulsp\\target\\debug\\bidhulsp.exe", "--stdio" },
-			filetypes = { "bidhuscript" },
-		})
 
-		vim.lsp.config("gopls", {
-			cmd = { "D:\\coding\\oss\\tools\\gopls\\gopls.exe" },
-		})
-
+		-- Servers installed through mason (see mason-tool-installer.lua)
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("gopls")
 		vim.lsp.enable("rust_analyzer")
-		vim.lsp.enable("bidhulsp")
+
+		-- Machine-specific binaries: only used when they actually exist, so the
+		-- config doesn't break on a machine without these paths.
+		local gopls_path = [[D:\coding\oss\tools\gopls\gopls.exe]]
+		if vim.uv.fs_stat(gopls_path) then
+			vim.lsp.config("gopls", { cmd = { gopls_path } })
+		end
+
+		local bidhulsp_path = [[D:\coding\bidhulsp\target\debug\bidhulsp.exe]]
+		if vim.uv.fs_stat(bidhulsp_path) then
+			vim.lsp.config("bidhulsp", {
+				cmd = { bidhulsp_path, "--stdio" },
+				filetypes = { "bidhuscript" },
+				root_markers = { ".git" },
+			})
+			vim.lsp.enable("bidhulsp")
+		end
+
 		vim.diagnostic.config({
 			-- Enable virtual text (this puts the warning/error after the line's last character)
 			virtual_text = {
@@ -34,7 +44,13 @@ return {
 			-- Do not update diagnostics while typing (waits until you leave insert mode/save)
 			update_in_insert = false,
 
-			-- Show hover windows with a nice border
+			-- Show errors before warnings when several diagnostics overlap
+			severity_sort = true,
+
+			-- Make the default ]d / [d open the float after jumping
+			jump = { float = true },
+
+			-- Border comes from 'winborder'
 			float = {
 				source = "always",
 			},

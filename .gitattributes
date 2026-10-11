@@ -1,0 +1,2 @@
+# Keep line endings as LF in the repo so editing on Windows doesn't create noisy diffs
+* text=auto eol=lf
