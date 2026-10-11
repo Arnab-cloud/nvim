@@ -13,6 +13,16 @@ return {
 					crust = "#0b0b12", -- borders, deepest layer (default #11111b)
 				},
 			},
+			dim_inactive = {
+				enabled = true,
+				shade = "dark",
+				percentage = 0.15,
+			},
+			custom_highlights = function(colors)
+				return {
+					WinSeparator = { fg = colors.lavender, bold = true },
+				}
+			end,
 			integrations = {
 				cmp = true, -- Turns on Catppuccin styling for nvim-cmp
 				gitsigns = true,
