@@ -2,12 +2,12 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin" },
+        dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
         event = "VeryLazy",
         config = function()
             require("lualine").setup({
                 options = {
-                    theme = "catppuccin", -- Automatically matches your flavor (mocha, frappe, etc.)
+                    -- theme = "catppuccin-nvim", -- Automatically matches your flavor (mocha, frappe, etc.)
                     component_separators = { left = "│", right = "│" },
                     section_separators = { left = "", right = "" }, -- Rounded pill-shaped edges
                     globalstatus = true, -- Keeps a single global statusline at the very bottom

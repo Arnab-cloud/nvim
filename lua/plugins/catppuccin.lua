@@ -4,10 +4,12 @@ return {
     priority = 1000,
     config = function()
         require("catppuccin").setup({
-            falvour = "mocha",
+            flavour = "mocha",
             integrations = {
                 cmp = true, -- Turns on Catppuccin styling for nvim-cmp
-                treesitter = true,
+                gitsigns = true,
+                lualine = true,
+                mason = true,
                 telescope = { enabled = true },
                 -- Any other integrations you want...
             },

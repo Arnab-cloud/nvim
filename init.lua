@@ -1,7 +1,5 @@
 require("remap") -- global remaps
 
-require("config.lazy")
-
 vim.opt.number = true
 vim.opt.relativenumber = true -- for realtive line number
 
@@ -12,14 +10,12 @@ vim.opt.softtabstop = 4 -- if non-zero, number of spaces to insert for a <Tab>
 
 vim.opt.autoindent = true
 
+vim.opt.scrolloff = 10 -- keeps 10 rows below and above the cursor
+
+vim.o.winborder = "rounded" -- keeps the border rounded
+
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
 
---  vim.api.nvim_create_autocmd("LspAttach", {
---  	callback = function(args)
---  		local client = vim.lsp.get_client_by_id(args.data.client_id)
---  		-- Verify the client exists before enabling completion
---  		if client then
---  			vim.lsp.completion.enable(true, client.id, args.buf)
---  		end
---  	end,
---  })
+require("config.lazy")
+
+vim.filetype.add({ extension = { bidhu = "bidhuscript" } })

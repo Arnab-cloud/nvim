@@ -4,12 +4,13 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform will run multiple formatters sequentially
-			python = { "ruff", "isort", "black", stop_after_first = true },
+			python = { "ruff_organize_imports", "ruff_format" },
 			-- You can customize some of the format options for the filetype (:help conform.format)
 			rust = { "rustfmt", lsp_format = "fallback" },
 			go = { "goimports", "gofmt" },
 			-- Conform will run the first available formatter
-			javascript = { "prettierd", "prettier", stop_after_first = true },
+			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+			-- typescript = { "prettierd", "prettier", stop_after_first = true }
 		},
 		format_on_save = {
 			timeout_ms = 500,
